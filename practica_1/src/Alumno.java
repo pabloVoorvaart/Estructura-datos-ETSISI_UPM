@@ -78,7 +78,7 @@ public class Alumno {
     public void mostrarAsignaturas(){
        String array[] = this.getAsignaturas();
        if(array.length==0){
-           System.out.print("\t -El alumno no esta registrado en ninguna asignatura \n");
+           System.out.print("\t -El alumno no esta registrado en ninguna asignatura \n\n");
        }
        else{
            for(int i=0;i<array.length;i++){

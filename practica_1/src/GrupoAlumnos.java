@@ -9,11 +9,19 @@ public class GrupoAlumnos {
     public GrupoAlumnos(){
         this.Nombre = "grupoDesconocido";
         this.maximo = 10;
+        this.ListaAlumnos = new Alumno[maximo];
+        this.generateFile();
     }
 
     public GrupoAlumnos(int max, String nombre){
         this.Nombre = nombre;
         this.maximo = max;
+        this.ListaAlumnos = new Alumno[maximo];
+        this.generateFile();
+    }
+
+    private void generateFile(){
+        FileHandler ficherGrupo = new FileHandler(this);
     }
 
     //getters
@@ -43,7 +51,7 @@ public class GrupoAlumnos {
     }
 
     public boolean insertarAlumno(Alumno a){
-        if(ListaAlumnos.length==maximo){
+        if(numAlumnos==maximo){
             return false;
         }
         else{
