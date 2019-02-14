@@ -4,7 +4,6 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class FileHandler {
-    private String filename;
     private File file;
     private GrupoAlumnos _grupo;
 
@@ -21,7 +20,7 @@ public class FileHandler {
             }
         }
         else{
-            System.out.print( filename + " does not exist, creating....\n");
+            System.out.print( this._grupo.Nombre + ".txt" + " does not exist, creating....\n");
             try {
                 file.createNewFile();
             }
@@ -44,8 +43,21 @@ public class FileHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        this._grupo.loaded=true;
     }
 
+    public void writteFile(Alumno a){
+        FileWriter fw;
+        try {
+            fw = new FileWriter(this.file, true);
+            fw.write(System.lineSeparator()); //new line
+            fw.write(String.format("%s %s %s", a.getNombre(), a.getMatricula(), String.valueOf(a.getCalificacion())));
+            fw.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 
