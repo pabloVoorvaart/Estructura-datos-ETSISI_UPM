@@ -62,7 +62,7 @@ public class GrupoAlumnos {
         else{
             ListaAlumnos[numAlumnos] = a;
             numAlumnos++;
-            if(this.loaded==true){
+            if(this.loaded){
                 fileHandler.writteFile(a);
             }
 
@@ -86,15 +86,18 @@ public class GrupoAlumnos {
     }
 
 
-    public void maxCalif(){
-        double max = 0;
+    public void maxCalif() {
 
-        for(int i = 0; i < numAlumnos; i++){
-            if(this.alumnoPos(i).getCalificacion() > max){
+        double max = 0;
+        int indice = 0;
+
+
+        for (int i = 0; i < numAlumnos; i++) {
+            if (this.alumnoPos(i).getCalificacion() > max) {
                 max = this.alumnoPos(i).getCalificacion();
+                indice = i;
             }
         }
-        System.out.print(max);
-
+        this.alumnoPos(indice).mostarAlumno();
     }
 }

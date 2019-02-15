@@ -7,9 +7,10 @@ public class Menu {
         System.out.println("Opciones:");
         System.out.println("1) Mostrar grupo.");
         System.out.println("2) Añadir alumno.");
-        System.out.println("3) Mostrar media de la clase");
-        System.out.println("4) Mostrar maxima calificacion");
-        System.out.println("5) Salir.");
+        System.out.println("3) Añadir asignatura.");
+        System.out.println("4) Mostrar media de la clase.");
+        System.out.println("5) Mostrar maxima calificacion.");
+        System.out.println("6) Salir.");
     }
     public boolean menuSub(GrupoAlumnos _grupo, int optionSub){
         switch(optionSub) {
@@ -44,14 +45,31 @@ public class Menu {
                 return false;
 
             case 3:
-                _grupo.mediaCalif();
+                //anadir asignatura to alumno
+                System.out.print("Introduzca la matricula del alumno: ");
+                String matr = reader.next();
+                System.out.print("\n");
+                for(int i=0; i<_grupo.getNumAlumnos();i++){
+                    if(_grupo.alumnoPos(i).getMatricula().equals(matr)){
+                        System.out.println("Alumno found...");
+                        System.out.print("Introduzca asignatura a añadir: ");
+                        String Asig = reader.next();
+                        _grupo.alumnoPos(i).anadirAsignatura(Asig);
+                    }
+
+                }
+                System.out.println("Alumno not found");
                 return false;
 
             case 4:
-                _grupo.maxCalif();
+                _grupo.mediaCalif();
                 return false;
 
             case 5:
+                _grupo.maxCalif();
+                return false;
+
+            case 6:
                 System.out.println("Exiting....");
                 return true;
 

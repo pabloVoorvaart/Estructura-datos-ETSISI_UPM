@@ -30,7 +30,7 @@ public class Alumno {
 
     //getters
     public String getNombre(){
-        String NombreApellido = Apellidos + ", " + Nombre +".";
+        String NombreApellido = Apellidos + " " + Nombre;
         return NombreApellido;
     }
 
@@ -78,17 +78,18 @@ public class Alumno {
     public void mostrarAsignaturas(){
        String array[] = this.getAsignaturas();
        if(array.length==0){
-           System.out.print("\t -El alumno no esta registrado en ninguna asignatura \n\n");
+           System.out.print("\t -El alumno no esta registrado en ninguna asignatura \n");
        }
        else{
            for(int i=0;i<array.length;i++){
-               System.out.print("\t -" + array[i] + ".");
+               System.out.println("\t -" + array[i] + ".");
            }
        }
     }
 
     public void mostarAlumno(){
-        System.out.print("Nombre: " + this.getNombre() + " Matricula: " + this.getMatricula() + " ("+this.getCalificacion()+")\n");
+        System.out.print("Nombre: " + this.getNombre() + ". Matricula: " + this.getMatricula() + " ("+this.getCalificacion()+")\n");
         this.mostrarAsignaturas();
+        System.out.print("\n");
     }
 }
