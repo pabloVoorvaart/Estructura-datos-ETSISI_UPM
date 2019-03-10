@@ -24,45 +24,45 @@ public class Comprobador1 {
 
     public void esPalindromo(){
     //esto deberia ser bool!!!
-    int posMid, cont = 0;
+        int posMid, cont = 0;
 
-    for(int i = 0; i<frase.length(); i++){
-        if(frase.charAt(i)!= ' '){
-            pila1.apilar(frase.charAt(i));
+        for(int i = 0; i<frase.length(); i++){
+            if(frase.charAt(i)!= ' '){
+                pila1.apilar(frase.charAt(i));
+            }
         }
-    }
 
-    if(pila1.numElemPila()%2!=0){
-        posMid = ((pila1.numElemPila()-1)/2+1);
-        for(int i = 0; i<posMid-1; i++){
-            pila2.apilar(pila1.cima());
+        if(pila1.numElemPila()%2!=0){
+            posMid = ((pila1.numElemPila()-1)/2+1);
+            for(int i = 0; i<posMid-1; i++){
+                pila2.apilar(pila1.cima());
+                pila1.desapilar();
+            }
             pila1.desapilar();
+            posMid = posMid - 1;
         }
-        pila1.desapilar();
-    }
-    else{
-        posMid = ((pila1.numElemPila())/2);
+        else{
+            posMid = ((pila1.numElemPila())/2);
 
-        for(int i = 0; i<posMid; i++){
-            pila2.apilar(pila1.cima());
+            for(int i = 0; i<posMid; i++){
+                pila2.apilar(pila1.cima());
+                pila1.desapilar();
+            }
+        }
+
+        while(pila1.cima()!='9' && pila2.cima() != '9'){
+            if(pila1.cima()==pila2.cima()){
+                cont ++;
+            }
             pila1.desapilar();
+            pila2.desapilar();
         }
-    }
-
-
-    while(pila1.cima()!='9' && pila2.cima() != '9'){
-        if(pila1.cima()==pila2.cima()){
-            cont ++;
+        if(cont==posMid){
+            System.out.println("Es palindromo");
         }
-        pila1.desapilar();
-        pila2.desapilar();
-    }
-    if(cont==posMid){
-        System.out.println("Es palindromo");
-    }
-    else{
-        System.out.println("No es palindromo");
-    }
+        else{
+            System.out.println("No es palindromo");
+        }
 
     }
 }

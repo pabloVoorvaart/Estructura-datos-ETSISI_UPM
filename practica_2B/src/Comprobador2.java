@@ -25,7 +25,8 @@ public class Comprobador2 {
 
     public void esPalindromo(){
         //esto deberia ser bool!!!
-        int cont = 0, cont2 = 0;
+        int cont = 0;
+        int cont2 = 0;
 
         for(int i = 0; i<frase.length(); i++){
             if(frase.charAt(i)!= ' '){

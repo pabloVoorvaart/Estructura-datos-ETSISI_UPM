@@ -55,7 +55,7 @@ public class ColaCaracteres {
             System.out.println("Error, la cola está vacía");
         return resul;
     }
-    
+
 
     public void escribirCola() {     // Muestra por pantalla el contenido de la cola
         NodoCaracteres aux;
