@@ -71,11 +71,17 @@ public class Cola {
     }
 
     public void dejarN(int n) {
+        Nodo aux;
         if(n>this.numElem){
             return;
         }
         else{
-
+            this.numElem = n;
+            aux = cabeza;
+            for(int i = 1; i<n; i++){
+                aux = aux.getSiguiente();
+            }
+            aux.setSiguiente(null);
         }
     }
 }

@@ -1,70 +1,87 @@
 public class Pila {
-    private Nodo cima;
-    private int numElem;
 
+    private Nodo cimaPila;
+    private int numElementos;
 
     public Pila() {
-        this.cima = null;
-        this.numElem = 0;
+        cimaPila = null;
+        numElementos = 0;
     }
 
-    public void apilar(int num) {
-        Nodo obj = new Nodo(num, this.cima);
-        this.cima = obj;
-        numElem++;
+
+    public boolean pilaVacia() {
+
+        return cimaPila == null;
+    }
+
+    public void apilar(int dato) {
+        if (this.pilaVacia())
+            cimaPila = new Nodo(dato, null);
+        else {
+            Nodo nuevo = new Nodo(dato, cimaPila);
+            cimaPila = nuevo;
+        }
+        numElementos++;
     }
 
     public int desapilar() {
-        if (this.cima != null) {
-            int valor = this.cima.getDato();
-            this.cima = cima.getSiguiente();
-            numElem--;
-            return valor;
+        int valor;
+        if (this.pilaVacia()) {
+            System.out.println("Error, la pila está vacía");
+            valor = -9999;
         } else {
-            return -1;
-        }
-    }
-
-    public int cima() {
-        return this.cima.getDato();
-    }
-
-    public void decapitar() {
-        if (this.cima != null) {
-            this.cima = cima.getSiguiente();
-            numElem--;
-        }
-    }
-
-    public int numElemPila() {
-        return this.numElem;
-    }
-
-    public void escribirPila() {
-        int valor = this.desapilar();
-        if (valor != -1) {
-            System.out.println(valor);
-            this.escribirPila();
-            this.apilar(valor);
-        }
-    }
-
-    public int sumarElementos(int valor) {
-        int _cima;
-        if (this.cima != null) {
-            _cima = this.desapilar();
-            valor += this.sumarElementos(_cima);
-            this.apilar(_cima);
+            valor = cimaPila.getDato();
+            cimaPila = cimaPila.getSiguiente();
+            numElementos--;
         }
         return valor;
     }
 
-    public void juntarPila(Pila obj) {
+    public int cima() {
+        int valor;
+        if (this.pilaVacia()) {
+            System.out.println("Error, la pila está vacía");
+            valor = -9999;
+        } else {
+            valor = cimaPila.getDato();
+        }
+        return valor;
+    }
+
+
+    public int numElemPila() {
+        return numElementos;
+    }
+
+    public void escribirPila() {
+        Nodo aux = cimaPila;
+        System.out.println("contenido de la pila");
+
+        while (aux != null) {
+            System.out.print(aux.getDato() + "  ");
+            aux = aux.getSiguiente();
+        }
+    }
+
+    public int sumarElementos() {
+        Nodo aux = cimaPila;
+        int valor = 0;
+
+        while(aux != null){
+            valor += aux.getDato();
+            aux = aux.getSiguiente();
+        }
+        return valor;
+    }
+
+
+    public void unirPila(Pila obj) {
         int paraApilar;
-        if(obj.cima!= null) {
+        if(obj.cima() != -9999) {
             paraApilar = obj.desapilar();
-            this.juntarPila(obj);
+            this.unirPila(obj);
             this.apilar(paraApilar);
         }
     }
+
 }
