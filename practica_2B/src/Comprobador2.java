@@ -25,27 +25,24 @@ public class Comprobador2 {
 
     public void esPalindromo(){
         //esto deberia ser bool!!!
-        int posMid, cont = 0;
+        int cont = 0, cont2 = 0;
 
         for(int i = 0; i<frase.length(); i++){
             if(frase.charAt(i)!= ' '){
                 pila1.apilar(frase.charAt(i));
                 cola1.encolar(frase.charAt(i));
+                cont2 ++;
             }
         }
 
-
-        NodoCaracteres aux1 = pila1.NodoCima();
-        NodoCaracteres aux2 = cola1.NodoCima();
-
-        while(aux1!=null && aux2 != null){
-            if(aux1.getDato()==aux2.getDato()){
+        while(pila1.cima()!='9' && cola1.primero() != '9'){
+            if(pila1.cima()==cola1.primero()){
                 cont ++;
             }
-            aux1 = aux1.getSiguiente();
-            aux2 = aux2.getSiguiente();
+            pila1.desapilar();
+            cola1.desencolar();
         }
-        if(cont==pila1.numElemPila()&&cont==cola1.numElemCola()){
+        if(cont==cont2){
             System.out.println("Es palindromo");
         }
         else{

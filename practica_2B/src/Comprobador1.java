@@ -49,17 +49,15 @@ public class Comprobador1 {
         }
     }
 
-    NodoCaracteres aux1 = pila1.NodoCima();
-    NodoCaracteres aux2 = pila2.NodoCima();
 
-    while(aux1!=null && aux2 != null){
-        if(aux1.getDato()==aux2.getDato()){
+    while(pila1.cima()!='9' && pila2.cima() != '9'){
+        if(pila1.cima()==pila2.cima()){
             cont ++;
         }
-        aux1 = aux1.getSiguiente();
-        aux2 = aux2.getSiguiente();
+        pila1.desapilar();
+        pila2.desapilar();
     }
-    if(cont==pila1.numElemPila()&&cont==pila2.numElemPila()){
+    if(cont==posMid){
         System.out.println("Es palindromo");
     }
     else{

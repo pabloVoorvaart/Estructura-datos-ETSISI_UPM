@@ -9,6 +9,7 @@ public class Principal {
 
         cp4.leerFrase(); cp4.esPalindromo();
 
+
         Comprobador2 cp21 = new Comprobador2("aroma a mora");
         Comprobador2 cp22 = new Comprobador2("camino a casa");
         Comprobador2 cp23 = new Comprobador2("dabale arroz a la zorra el abad");

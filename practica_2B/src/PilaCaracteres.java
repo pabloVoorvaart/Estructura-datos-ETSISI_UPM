@@ -38,21 +38,9 @@ public class PilaCaracteres {
     public char cima() {
         char valor;
         if (this.pilaVacia()) {
-            System.out.println("Error, la pila está vacía");
             valor = '9';
         } else {
             valor = cimaPila.getDato();
-        }
-        return valor;
-    }
-
-    public NodoCaracteres NodoCima() {
-        NodoCaracteres valor;
-        if (this.pilaVacia()) {
-            System.out.println("Error, la pila está vacía");
-            valor = null;
-        } else {
-            valor = cimaPila;
         }
         return valor;
     }
