@@ -58,30 +58,40 @@ public class Pila {
         System.out.println("contenido de la pila");
 
         while (aux != null) {
-            System.out.print(aux.getDato() + "  ");
+            System.out.println(aux.getDato());
             aux = aux.getSiguiente();
         }
     }
 
-    public int sumarElementos() {
+    public int sumarElementos(){
+        int sum = 0;
         Nodo aux = cimaPila;
-        int valor = 0;
-
-        while(aux != null){
-            valor += aux.getDato();
+        while (aux != null){
+            sum = sum + aux.getDato();
             aux = aux.getSiguiente();
         }
-        return valor;
+        return sum;
     }
 
+    public void unirPila(Pila p) {
+        Nodo aux = p.cimaPila;
 
-    public void unirPila(Pila obj) {
-        int paraApilar;
-        if(obj.cima() != -9999) {
-            paraApilar = obj.desapilar();
-            this.unirPila(obj);
-            this.apilar(paraApilar);
+        if (aux != null) {
+
+            while (aux.getSiguiente() != null) {
+                aux = aux.getSiguiente();
+            }
+
+            aux.setSiguiente(this.cimaPila); // Los sets modifican direcciones de memoria
+            this.cimaPila = p.cimaPila;
+            this.numElementos = this.numElementos + p.numElementos;
+
         }
-    }
 
+        p.cimaPila = null;
+        p.numElementos = 0;
+
+        this.escribirPila();
+
+    }
 }

@@ -20,7 +20,7 @@ public class Cola {
         numElem++;
     }
 
-    public int desencolar() {    //Devuelve el elemento del cabeza de la cola y lo elimina Si la cola está vacía, devuelve como resultado 0 y un mensaje de error
+    public int desencolar() {    //Devuelve el elemento del cabeza de la cola y lo elimina. Si la cola está vacía, devuelve como resultado 0 y un mensaje de error
         Nodo nodo;
         int resul = 0;
 
@@ -30,9 +30,9 @@ public class Cola {
             nodo = cabeza;
             cabeza = nodo.getSiguiente();
             resul = nodo.getDato();
-            if (cabeza == null)
+            if (cabeza == null) {
                 fin = null;
-
+            }
             numElem--;
         }
         return resul;
@@ -50,8 +50,9 @@ public class Cola {
 
         if (!this.colaVacia()) {
             resul = cabeza.getDato();
-        } else
+        } else {
             System.out.println("Error, la cola está vacía");
+        }
         return resul;
     }
 
@@ -66,23 +67,29 @@ public class Cola {
     }
 
     public int numElemCola() {       // Devuelve el número de elementos de la cola
-
         return numElem;
     }
 
-    public void dejarN(int n) {
+    void dejarN(int n){
+
         Nodo aux;
-        if(n>this.numElem){
-            return;
+        aux = cabeza;
+
+        if (n == 0){
+            cabeza = null;
+            fin = null;
         }
-        else{
-            this.numElem = n;
-            aux = cabeza;
-            for(int i = 1; i<n; i++){
+
+        else if(numElem > n) {
+
+            for (int i = 1; i < n; i++) {
                 aux = aux.getSiguiente();
             }
             aux.setSiguiente(null);
+            fin = aux;
+            numElem = n;
         }
-    }
-}
 
+    }
+
+}

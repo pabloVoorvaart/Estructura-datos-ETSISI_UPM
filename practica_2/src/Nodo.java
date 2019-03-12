@@ -1,18 +1,11 @@
 public class Nodo {
+
     private int dato;
     private Nodo siguiente;
 
-    public Nodo(int dato, Nodo siguiente) {
+    public Nodo(int dato, Nodo sig) {
         this.dato = dato;
-        this.siguiente = siguiente;
-    }
-
-    public int getDato() {
-        return dato;
-    }
-
-    public void setDato(int dato) {
-        this.dato = dato;
+        this.siguiente = sig;
     }
 
     public Nodo getSiguiente() {
@@ -23,4 +16,11 @@ public class Nodo {
         this.siguiente = siguiente;
     }
 
+    public int getDato() {
+        return dato;
+    }
+
+    public void setDato(int dato) {
+        this.dato = dato;
+    }
 }
