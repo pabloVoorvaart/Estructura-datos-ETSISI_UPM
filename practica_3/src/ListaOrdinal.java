@@ -30,15 +30,22 @@ class ListaOrdinal {
     public void borrarAltas(){
         Nodo actual = inicio;
         Nodo siguiente;
-
-        while (actual.getSiguiente() != null) {
-                siguiente = actual.getSiguiente();
-                while (siguiente.getDato().estaAlta()) {
-                    siguiente = siguiente.getSiguiente();
-                }
-                actual.setSiguiente(siguiente);
-                actual = siguiente;
+        while(actual != null && actual.getDato().estaAlta()){
+            actual = actual.getSiguiente();
+            numElementos--;
         }
+        this.inicio = actual;
+
+        actual.getSiguiente().getDato().verPaciente();
+
+            siguiente = actual.getSiguiente();
+            while (siguiente.getDato().estaAlta()) {
+                siguiente = siguiente.getSiguiente();
+            }
+            actual.setSiguiente(siguiente);
+            actual = siguiente;
+            actual.getDato().verPaciente();
+
 
     }
 
