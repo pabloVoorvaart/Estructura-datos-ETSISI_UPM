@@ -16,26 +16,27 @@ public class Aplicacion {
         lista.insertar(Eva);
         lista.insertar(Ernesto);
 
-        Alberto.darAlta();
+        Eva.darAlta();
         Ana.darAlta();
-        Ernesto.darAlta();
 
         // 2.3.Ampliación del TAD Lista ordinal de Pacientes.
-        /*lista.borrarAltas();
+        lista.borrarAltas();
         Iterador x = lista.obtenerIterador();
         while(x.hasNext()){
             x.next().verPaciente();
         }
-        */
+
 
 
         //2.4.Utilización del TAD Lista ordinal de Pacientes.
+        lista.insertar(Ana);
+        lista.insertar(Eva);
         verAltas(lista);
 
         //2.5 pacientesSintoma
         String sintoma = "mareo";
         Iterador i = pacientesSintoma(lista, sintoma).obtenerIterador();
-        System.out.println("PACIENTES CON " + sintoma.toUpperCase() + ":");
+        System.out.println("\nPACIENTES CON " + sintoma.toUpperCase() + ":");
         while(i.hasNext()){
             i.next().verPaciente();
         }
@@ -46,7 +47,7 @@ public class Aplicacion {
     public static void verAltas(ListaOrdinal lista){
         Iterador i = lista.obtenerIterador();
         Paciente a;
-        System.out.println("PACIENTES DE ALTA:");
+        System.out.println("\nPACIENTES DE ALTA:");
         while(i.hasNext()){
             a = i.next();
             if(a.estaAlta()){
