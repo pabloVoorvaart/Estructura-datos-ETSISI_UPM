@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class Aplicacion {
 
     public static void main(String[] args) {
@@ -26,7 +24,7 @@ public class Aplicacion {
             x.next().verPaciente();
         }
 
-
+        lista.borrarAltas();
 
         //2.4.Utilización del TAD Lista ordinal de Pacientes.
         lista.insertar(Ana);

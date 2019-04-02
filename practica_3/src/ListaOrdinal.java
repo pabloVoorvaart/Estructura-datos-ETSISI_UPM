@@ -84,7 +84,7 @@ class ListaOrdinal {
     /** Borra el primer elemento de la lista cuyo dato coincide con el
      * parámetro recibido.
      */
-    public void borrar(Paciente dato) {
+     public void borrar(Paciente dato) {
         Nodo actual = inicio;
         Nodo anterior = null;
         boolean borrado = false;

@@ -21,10 +21,12 @@ public class Aplicacion {
 
         //pruebas ColaPrioridades
         ColaPrioridades cola = new ColaPrioridades();
+
         cola.encolar(2, Ana);
         cola.encolar(4, Alberto);
         cola.encolar(4, Eva);
         cola.verColaPrioridades();
+
         System.out.println("----------------------\nPACIENTE ATENDIDO:");
         cola.desencolar().verPaciente();
         System.out.println("----------------------");

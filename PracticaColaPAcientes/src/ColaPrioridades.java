@@ -16,22 +16,23 @@ public class ColaPrioridades {
         // TODO encolar con prioridad
         NodoPrioridad nuevo;
         Cola cola = new Cola();
+        boolean entry = true;
         if (this.estaVacia()||prioridad < inicio.getClave()) {
             inicio = new NodoPrioridad(prioridad, cola, inicio);
             inicio.getDato().encolar(paciente);
         }
         else {
             NodoPrioridad actual = inicio;
-            while (actual != null) {
+            while (actual != null && entry) {
                 if (prioridad == actual.getClave()) {
                     actual.getDato().encolar(paciente);
-                    break;
+                    entry = false;
                 }
                 if (prioridad > actual.getClave() && (actual.getSiguiente() == null || prioridad < actual.getSiguiente().getClave())) {
                     nuevo = new NodoPrioridad(prioridad, cola, actual.getSiguiente());
                     nuevo.getDato().encolar(paciente);
                     actual.setSiguiente(nuevo);
-                    break;
+                    entry = false;
                 }
                 actual = actual.getSiguiente();
             }
@@ -42,8 +43,8 @@ public class ColaPrioridades {
      * y si no la encuentra devuelve NULL.
      */
     public Paciente desencolar() {
-        Paciente paciente;
         // TODO desencolar
+        Paciente paciente;
         if(!this.estaVacia()){
             paciente =  inicio.getDato().desencolar();
             if(inicio.getDato().colaVacia()){
